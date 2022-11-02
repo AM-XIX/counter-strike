@@ -1,13 +1,12 @@
 import {SET_MESSAGE} from './constants/actions';
 
-export default store => next => action => {
+function isPrime(num) {
+    for(var i = 2; i < num; i++)
+        if(num % i === 0) return false;
+    return num > 1;
+}
 
-    // déterminer nb premier
-    function isPrime(num) {
-        for(var i = 2; i < num; i++)
-            if(num % i === 0) return false;
-        return num > 1;
-    }
+export default store => next => action => {   
      
     const state = store.getState(); 
 
@@ -19,10 +18,11 @@ export default store => next => action => {
 
     if(isPrime(count)){
         console.log(state.counter.value);
-        // store.dispatch({type: SET_LOG, payload: "⭐"});
-        console.log(action.type);
-        // store.dispatch({type: SET_MESSAGE, payload: "⭐"});
+        // store.dispatch({type: SET_MESSAGE, payload: ' *'});
+        console.log(state.counter.message);
+    } else {
+        // store.dispatch({type: SET_MESSAGE, payload: ' '});
     }
-    
+
     return returnAction ;
 }

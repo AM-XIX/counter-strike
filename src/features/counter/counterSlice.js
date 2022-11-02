@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
   value: 0,
   status: 'idle',
-  message: ' ' ,
+  message: ' ',
 };
 
 export const counterSlice = createSlice({
@@ -21,10 +21,13 @@ export const counterSlice = createSlice({
     incrementByAmount: (state, action) => {
       state.value += action.payload;
     },
+    setStar : (state) => {
+      state.message = ' *';
+    }
   },
 });
 
-export const { increment, decrement, incrementByAmount } = counterSlice.actions;
+export const { increment, decrement, incrementByAmount, setStar } = counterSlice.actions;
 export const selectCount = (state) => state.counter.value;
 export const selectMessage = (state) => state.counter.message;
 
