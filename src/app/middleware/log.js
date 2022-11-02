@@ -1,14 +1,15 @@
-import {SET_MESSAGE} from './constants/actions';
+// import { SET_MESSAGE } from './constants/actions';
+import { setStar } from '../../features/counter/counterSlice';
 
 function isPrime(num) {
-    for(var i = 2; i < num; i++)
-        if(num % i === 0) return false;
+    for (var i = 2; i < num; i++)
+        if (num % i === 0) return false;
     return num > 1;
 }
 
-export default store => next => action => {   
-     
-    const state = store.getState(); 
+export default store => next => action => {
+
+    const state = store.getState();
 
     // console.log("before", state);
     const returnAction = next(action);
@@ -16,13 +17,12 @@ export default store => next => action => {
     const count = state.counter.value;
     // console.log("count", count);
 
-    if(isPrime(count)){
+    if (isPrime(count)) {
         console.log(state.counter.value);
-        // store.dispatch({type: SET_MESSAGE, payload: ' *'});
-        console.log(state.counter.message);
+        store.dispatch(setStar('*'));
     } else {
-        // store.dispatch({type: SET_MESSAGE, payload: ' '});
+        store.dispatch(setStar(' '));
     }
 
-    return returnAction ;
+    return returnAction;
 }
