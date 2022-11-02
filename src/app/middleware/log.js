@@ -1,4 +1,4 @@
-import {SET_LOG} from './constants/actions';
+import {SET_MESSAGE} from './constants/actions';
 
 export default store => next => action => {
 
@@ -17,14 +17,11 @@ export default store => next => action => {
     const count = state.counter.value;
     // console.log("count", count);
 
-    if(isPrime(count) && action.type !== SET_LOG){
-        alert("Le nombre " + count + "est premier");
-        console.log(count + "premier");
-        // store.dispatch({type: SET_LOG, payload: count + "start"});
-        // const { count : countLog } = store.getState().log;
-        // store.dispatch({ type : SET_LOG, date : (new Date()).toString(), count : countLog+"star" })
-        // console.log(store);
-
+    if(isPrime(count)){
+        console.log(state.counter.value);
+        // store.dispatch({type: SET_LOG, payload: "⭐"});
+        console.log(action.type);
+        // store.dispatch({type: SET_MESSAGE, payload: "⭐"});
     }
     
     return returnAction ;

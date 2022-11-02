@@ -3,6 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
   value: 0,
   status: 'idle',
+  message: ' ' ,
 };
 
 export const counterSlice = createSlice({
@@ -25,6 +26,7 @@ export const counterSlice = createSlice({
 
 export const { increment, decrement, incrementByAmount } = counterSlice.actions;
 export const selectCount = (state) => state.counter.value;
+export const selectMessage = (state) => state.counter.message;
 
 export const incrementIfOdd = (amount) => (dispatch, getState) => {
   const currentValue = selectCount(getState());
